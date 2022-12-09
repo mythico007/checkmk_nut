@@ -2,7 +2,7 @@
 
 [**_Network UPS Tools (NUT)_**](https://networkupstools.org/) _Plugin_ for [**_checkmk 2.0_**](https://checkmk.com/).
 
-Thanks to [@minodudd](https://github.com/minodudd) and [@gurubert](https://github.com/gurubert) for their previous work in this _Plugin_.
+Thanks to [@minodudd](https://github.com/minodudd), [@gurubert](https://github.com/gurubert) and [@danimart1991](https://github.com/danimart1991) for their previous work on this _Plugin_.
 
 ## Installation
 
@@ -50,6 +50,18 @@ $ sudo chmod 775 /local/lib/check_mk/base/plugins/agent_based/nut.py
 
 > If you are using the **_Docker_** _checkmk_ image, surely you need to copy the file to the path `/cmk/local/lib/python3/cmk/base/plugins/agent_based/nut.py` inside the container.
 
+Copy the file `/local/share/check_mk/web/plugins/wato/nut_parameters.py` to the same path in the _Raw Client_ of _checkmk_ and give **0775** permissions:
+
+```bash
+$ sudo chmod 775 /local/share/check_mk/web/plugins/wato/nut_parameters.py
+```
+
+Copy the file `/local/share/check_mk/web/plugins/metrics/nut_metrics.py` to the same path in the _Raw Client_ of _checkmk_ and give **0775** permissions:
+
+```bash
+$ sudo chmod 775 /local/share/check_mk/web/plugins/metrics/nut_metrics.py
+```
+
 Restart the client/container, and then go to the host where _NUT_ and the _Agent Plugin_ are installed and discover new services with a **_Full Service Scan_**.
 
 ## Development
@@ -69,6 +81,23 @@ OMD[cmk]:~$ cmk --plugins=nut -v --check nserver
 ```
 
 > If you are using the **_Docker_** _checkmk_ image, you need to execute the command `omd su cmk` before this commands inside the container.
+
+## Configuration
+
+In checkmk WebClient, click on **Setup** and choose **General - Rule search** from menu. Search for rule **_nut_**.
+
+There you con configure a rule for following warnings / critical alarms: 
+- _Battery voltage_
+- _Input voltage low_
+- _Input voltage high_
+- _Charge_
+- _Runtime_
+- _Load_
+
+All those parameters have default values, you can find them in **_nut.py_** at the end.
+
+If you want different rules for different UPS, you can do it using host tags, for example.
+
 
 ## References
 
