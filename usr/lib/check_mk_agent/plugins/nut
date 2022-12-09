@@ -1,0 +1,14 @@
+#!/bin/sh
+
+echo '<<<nut>>>'
+
+if which upsc > /dev/null 2>&1 ; then
+    for ups in $(upsc -l > /dev/stdout 2> /dev/null)
+    do
+        upsc $ups > /dev/stdout 2> /dev/null | sed "s,^,$ups ,"
+    done
+    upsc ups@192.168.1.5 > /dev/stdout 2> /dev/null | sed "s,^,apcaz ,"
+else
+    echo "ERROR: upsc not found" >&2
+fi
+
