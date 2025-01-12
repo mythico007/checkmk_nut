@@ -12,7 +12,10 @@ First, clone or download the repository. Then...
 
 ### Agent
 
-We need to install the dependencies:
+First, if not yet done, you need to install the check_mk_agent on your machine. The package for this you can find on your checkmk server.
+(Menü Setup, Sections Agents, Linux)
+
+Then we need to install the dependencies:
 
 ```bash
 $ sudo apt install nut-client
