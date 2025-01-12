@@ -19,7 +19,7 @@ $ sudo apt install nut-client
 ```
 
 Then, copy the file `/usr/lib/check_mk_agent/plugins/nut` to the same path where the agent is installed, and give **0775** permissions:
-
+ 
 ```bash
 $ sudo chmod 775 /usr/lib/check_mk_agent/plugins/nut
 ```
@@ -43,6 +43,7 @@ serverroom_ups device.type: ups
 ### Client (Raw)
 
 Copy the file `/local/lib/check_mk/base/plugins/agent_based/nut.py` to the same path in the _Raw Client_ of _checkmk_ and give **0775** permissions:
+(full installation path: /opt/omd/sites/<yoursitename>/local/...)
 
 ```bash
 $ sudo chmod 775 /local/lib/check_mk/base/plugins/agent_based/nut.py
